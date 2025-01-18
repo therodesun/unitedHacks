@@ -1,21 +1,22 @@
-import { Injectable } from '@nestjs/common';
-import { LoginDto } from '../types/dtos/login.dto';
+import { HttpException, Injectable } from '@nestjs/common';
+import { DbContext } from 'src/modules/database/context/db-context';
+import { LoginDto } from '../types/dtos/login.dto'; 
 
-@Injectable()
 export class LoginService {
-  // Simulating a simple user check. Replace with real database logic.
-  private readonly users = [
-    { username: 'admin', password: 'password123' },
-  ];
+  constructor(private readonly dbContext: DbContext) {}
 
   async login(loginDto: LoginDto): Promise<string> {
-    const user = this.users.find(user => user.username === loginDto.username);
+    const { email, password } = loginDto;
+    const user = await this.dbContext.users.findOne({ email });
 
-    if (!user || user.password !== loginDto.password) {
-      throw new Error('Invalid credentials');
+    if (!user) {
+      throw new HttpException('Invalid credentials', 400); 
     }
 
-    // Return a success message or JWT token in a real-world scenario.
-    return 'Login successful';
-  }
+    if (user.password !== password) {
+      throw new HttpException('Invalid credentials', 400); 
+    }
+
+    return 'Login successful'; 
+}
 }
