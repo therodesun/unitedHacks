@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import LoginSignup from '/Users/erikamanley/Desktop/unitedHacks/frontend/src/Components/LoginSignup/LoginSignup.jsx';
+import LoginSignup from './Components/LoginSignup/LoginSignup';
+
 
 function App() {
   return (
