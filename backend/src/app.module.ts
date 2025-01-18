@@ -12,6 +12,7 @@ import { NodeEnvironmentEnum } from './modules/shared/types/enums';
 import { TokenModule } from './modules/token/token.module';
 import { UserModule } from './modules/user/user.module';
 import { ValidationModule } from './modules/validation/validation.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 const modules = [
   ConfigModule.forRoot({
@@ -42,6 +43,7 @@ const modules = [
   UserModule,
   EmailModule,
   TokenModule,
+  AuthModule,
 ];
 
 @Module({
