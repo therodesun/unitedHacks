@@ -13,12 +13,15 @@ body {
     flex-direction: column;
     align-items: center;
     width: 500px;
+    max-height: 80vh; /* Set a maximum height */
     background: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     padding: 30px 20px;
-    overflow: hidden;
+    overflow-y: auto; /* Add vertical scrolling */
     position: relative;
+    scrollbar-width: thin; /* For modern browsers */
+    scrollbar-color: #4c00b4 #eaeaea; /* Customize scrollbar color */
 }
 
 .header {
@@ -82,10 +85,15 @@ body {
 .submit-container {
     display: flex;
     gap: 15px;
-    margin-top: 30px;
+    margin-top: 20px;
     width: 100%;
     justify-content: center;
+    position: sticky; /* Make it stick to the bottom */
+    bottom: 0; /* Align to the bottom of the container */
+    background: #fff; /* Ensure it matches the container's background */
+    padding: 10px 0; /* Add padding for better spacing */
 }
+
 
 .submit {
     display: flex;
@@ -129,3 +137,38 @@ body {
         width: 90%;
     }
 }
+
+.profile-picture-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #4c00b4;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profile-upload-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.placeholder {
+    color: #4c00b4;
+    font-size: 14px;
+    text-align: center;
+}
+
+.profile-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
