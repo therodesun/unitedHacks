@@ -13,6 +13,7 @@ import { TokenModule } from './modules/token/token.module';
 import { UserModule } from './modules/user/user.module';
 import { ValidationModule } from './modules/validation/validation.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { LoginModule } from './modules/login/login.module';  
 
 const modules = [
   ConfigModule.forRoot({
@@ -44,6 +45,7 @@ const modules = [
   EmailModule,
   TokenModule,
   AuthModule,
+  LoginModule,
 ];
 
 @Module({
