@@ -6,6 +6,18 @@ import { GiRank3 } from 'react-icons/gi';
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Sign Up");
+    const [profileImage, setProfileImage] = useState(null);
+
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                setProfileImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     return (
         <div className="container">
@@ -16,6 +28,22 @@ const LoginSignup = () => {
             <div className="inputs">
                 {action === "Sign Up" && (
                     <>
+                        <div className="profile-picture-upload">
+                            <label htmlFor="profile-upload" className="profile-upload-label">
+                                {profileImage ? (
+                                    <img src={profileImage} alt="Profile Preview" className="profile-preview" />
+                                ) : (
+                                    <div className="placeholder">Upload Photo</div>
+                                )}
+                            </label>
+                            <input
+                                type="file"
+                                id="profile-upload"
+                                accept="image/*"
+                                onChange={handleImageUpload}
+                                hidden
+                            />
+                        </div>
                         <div className="input">
                             <FaUser size={24} color="#797979" style={{ margin: '0 30px' }} />
                             <input type="text" placeholder="First Name" />
