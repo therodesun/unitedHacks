@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
-import { FaUser, FaGraduationCap, FaBriefcase, FaLock } from 'react-icons/fa';
-import { MdEmail, MdWorkOutline } from 'react-icons/md';
-import { GiRank3 } from 'react-icons/gi';
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Sign Up");
+    const [userType, setUserType] = useState("employee");
     const [profileImage, setProfileImage] = useState(null);
 
     const handleImageUpload = (e) => {
@@ -28,6 +26,7 @@ const LoginSignup = () => {
             <div className="inputs">
                 {action === "Sign Up" && (
                     <>
+                        {/* Profile Photo */}
                         <div className="profile-picture-upload">
                             <label htmlFor="profile-upload" className="profile-upload-label">
                                 {profileImage ? (
@@ -44,66 +43,92 @@ const LoginSignup = () => {
                                 hidden
                             />
                         </div>
+
+                        {/* General Fields */}
                         <div className="input">
-                            <FaUser size={24} color="#797979" style={{ margin: '0 30px' }} />
                             <input type="text" placeholder="First Name" />
                         </div>
                         <div className="input">
-                            <FaUser size={24} color="#797979" style={{ margin: '0 30px' }} />
                             <input type="text" placeholder="Last Name" />
                         </div>
                         <div className="input">
-                            <GiRank3 size={24} color="#797979" style={{ margin: '0 30px' }} />
-                            <select>
-                                <option value="recruiter">Recruiter</option>
+                            <select
+                                value={userType}
+                                onChange={(e) => setUserType(e.target.value)}
+                                className="dropdown"
+                            >
                                 <option value="employee">Employee</option>
+                                <option value="recruiter">Recruiter</option>
                             </select>
                         </div>
-                        <div className="input">
-                            <MdWorkOutline size={24} color="#797979" style={{ margin: '0 30px' }} />
-                            <input type="text" placeholder="Field" />
-                        </div>
-                        <div className="input">
-                            <FaGraduationCap size={24} color="#797979" style={{ margin: '0 30px' }} />
-                            <input type="text" placeholder="Education" />
-                        </div>
-                        <div className="input">
-                            <FaBriefcase size={24} color="#797979" style={{ margin: '0 30px' }} />
-                            <input type="text" placeholder="Experience" />
-                        </div>
+
+                        {/* Employee-Specific Fields */}
+                        {userType === "employee" && (
+                            <>
+                                <div className="input">
+                                    <input type="text" placeholder="Education (e.g., Bachelor's in CS)" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Skills (e.g., React, Node.js)" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Experience (e.g., 2 years)" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Location (e.g., New York, Remote)" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Expected Salary (e.g., $60,000/year)" />
+                                </div>
+                            </>
+                        )}
+
+                        {/* Recruiter-Specific Fields */}
+                        {userType === "recruiter" && (
+                            <>
+                                <div className="input">
+                                    <input type="text" placeholder="Company Name" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Roles You're Hiring For (e.g., Frontend Developer)" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Required Skills (e.g., JavaScript, AWS)" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Company Location (e.g., San Francisco, Remote)" />
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder="Salary Range (e.g., $50,000 - $80,000/year)" />
+                                </div>
+                            </>
+                        )}
                     </>
                 )}
+
+                {/* Login Fields */}
                 <div className="input">
-                    <MdEmail size={24} color="#797979" style={{ margin: '0 30px' }} />
                     <input type="email" placeholder="Email" />
                 </div>
                 <div className="input">
-                    <FaLock size={24} color="#797979" style={{ margin: '0 30px' }} />
                     <input type="password" placeholder="Password" />
                 </div>
             </div>
-            {action === "Login" && (
-                <div className="forgot-password">
-                    Forgot Password? <span>Click Here!</span>
-                </div>
-            )}
+
+            {/* Buttons */}
             <div className="submit-container">
-                <div
-                    className={action === "Login" ? "submit gray" : "submit"}
-                    onClick={() => {
-                        setAction("Sign Up");
-                    }}
+                <button
+                    className={`submit ${action === "Login" ? "gray" : ""}`}
+                    onClick={() => setAction("Sign Up")}
                 >
                     Sign Up
-                </div>
-                <div
-                    className={action === "Sign Up" ? "submit gray" : "submit"}
-                    onClick={() => {
-                        setAction("Login");
-                    }}
+                </button>
+                <button
+                    className={`submit ${action === "Sign Up" ? "gray" : ""}`}
+                    onClick={() => setAction("Login")}
                 >
                     Login
-                </div>
+                </button>
             </div>
         </div>
     );
