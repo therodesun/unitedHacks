@@ -27,6 +27,24 @@ export class User {
   password: string;
 
   @Prop({ type: String })
+  education: string;
+
+  @Prop({ type: String })
+  field: string;
+
+  @Prop({ type: String })
+  skills: string;
+
+  @Prop({ type: String })
+  experience: string;
+
+  @Prop({ type: String })
+  location: string;
+
+  @Prop({ type: String })
+  salary: string;
+
+  @Prop({ type: String })
   imageUrl: string;
 
   createdAt?: Date;

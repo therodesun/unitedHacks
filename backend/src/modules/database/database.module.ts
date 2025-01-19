@@ -5,12 +5,13 @@ import { mongoConnectionOptions } from './database-connection-options';
 import { SeederService } from './services';
 import { UserSchema } from '../user/collections';
 import { TokenSchema } from '../token/collections';
+import { UserSeeder } from './seeders';
 
 const collections = [
   { name: 'user', schema: UserSchema },
   { name: 'token', schema: TokenSchema },
 ];
-const seeders = [];
+const seeders = [UserSeeder];
 
 const modules = [MongooseModule.forRoot(mongoConnectionOptions.url)];
 const services = [SeederService];
