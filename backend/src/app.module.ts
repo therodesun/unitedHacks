@@ -13,7 +13,9 @@ import { TokenModule } from './modules/token/token.module';
 import { UserModule } from './modules/user/user.module';
 import { ValidationModule } from './modules/validation/validation.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { LoginModule } from './modules/login/login.module';  
+import { LoginModule } from './modules/login/login.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 const modules = [
   ConfigModule.forRoot({
@@ -46,6 +48,10 @@ const modules = [
   TokenModule,
   AuthModule,
   LoginModule,
+  ServeStaticModule.forRoot({
+    renderPath: 'static',
+    rootPath: join(__dirname, '..', 'static'),
+  }),
 ];
 
 @Module({

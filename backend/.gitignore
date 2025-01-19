@@ -34,3 +34,5 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 userorient-firebase-adminsdk-mz7mb-ec311d77bc.json
+
+static/images

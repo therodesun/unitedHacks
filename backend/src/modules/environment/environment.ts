@@ -96,7 +96,7 @@ export const PROJECT_NAME = configService.get<string>(
 
 export const API_BASE_URL = configService.get<string>(
   'API_BASE_URL',
-  'https://api.unitedhacks.com',
+  'http://localhost:4500',
 );
 
 export const APP_BASE_URL = configService.get<string>(
