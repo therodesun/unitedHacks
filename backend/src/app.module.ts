@@ -13,6 +13,12 @@ import { TokenModule } from './modules/token/token.module';
 import { UserModule } from './modules/user/user.module';
 import { ValidationModule } from './modules/validation/validation.module';
 import { AuthModule } from './modules/auth/auth.module';
+<<<<<<< Updated upstream
+=======
+import { LoginModule } from './modules/login/login.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+>>>>>>> Stashed changes
 
 const modules = [
   ConfigModule.forRoot({
@@ -44,6 +50,14 @@ const modules = [
   EmailModule,
   TokenModule,
   AuthModule,
+<<<<<<< Updated upstream
+=======
+  LoginModule,
+  ServeStaticModule.forRoot({
+    renderPath: 'static',
+    rootPath: join(__dirname, '..', 'static'),
+  }),
+>>>>>>> Stashed changes
 ];
 
 @Module({
