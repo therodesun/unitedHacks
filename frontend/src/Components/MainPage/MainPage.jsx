@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import './MainPage.css';
 
 const MainPage = () => {
   const [users, setUsers] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate(); // React Router navigation
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -22,25 +24,25 @@ const MainPage = () => {
   }, []);
 
   const handleAction = async (userId, action) => {
-    const email = localStorage.getItem('userEmail'); 
+    const email = localStorage.getItem('email'); // Retrieve email from localStorage
+    console.log('Retrieved email:', email); // Debugging line
     if (!email) {
       console.error('Email not found in localStorage');
       return;
     }
-
+  
     try {
       const response = await fetch('http://localhost:4500/main/action', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, userId, action }),
       });
-
-      if (response.ok) {
-        console.log(`${action} action sent for user ${userId}`);
+  
+      const data = await response.json();
+      if (data.matched) {
+        navigate('/matchedrecruiter'); // Navigate to /recruitermatch if matched
       } else {
-        console.error('Failed to send action:', await response.text());
+        console.log(`${action} action sent for user ${userId}`);
       }
     } catch (error) {
       console.error('Error sending action:', error);
@@ -48,8 +50,9 @@ const MainPage = () => {
   };
 
   const handleSwipe = (direction, userId) => {
-    const action = direction === 'right' ? 'like' : 'dislike';
-    handleAction(userId, action); 
+    const action = direction === 'right' ? 'LIKE' : 'DISLIKE';
+    handleAction(userId, action); // Trigger the action POST request
+
     const nextIndex = currentIndex + 1;
     setCurrentIndex(nextIndex);
 
