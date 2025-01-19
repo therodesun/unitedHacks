@@ -4,6 +4,7 @@
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #080026, #6745fe);
+    width: 80vw; 
   }
   
   .container {
@@ -20,6 +21,7 @@
     position: relative;
     scrollbar-width: thin;
     scrollbar-color: #4c00b4 #eaeaea;
+
   }
   
   .header {
