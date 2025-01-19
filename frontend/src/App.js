@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import MainPage from './Components/MainPage/MainPage';
+import LoginSignup from './Components/LoginSignup/LoginSignup';
 
 function App() {
   const users = [
@@ -41,8 +42,13 @@ function App() {
   ];
 
   return (
+<<<<<<< HEAD
     <div className="App">
       <MainPage users={users} />
+=======
+    <div>
+      <LoginSignup />
+>>>>>>> 84a8237ed0a7fc92a3c03a20c3722549fbe8615f
     </div>
   );
 }

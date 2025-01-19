@@ -5,7 +5,37 @@ const LoginSignup = () => {
     const [action, setAction] = useState("Sign Up");
     const [userType, setUserType] = useState("employee");
     const [profileImage, setProfileImage] = useState(null);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState('');
+    const handleLogin = () => {
+        if (!email || !password) {
+            setLoginError('Please enter both email and password');
+            return;
+        }
 
+        fetch('http://localhost:4500/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.accessToken) {
+                // Handle successful login (store token, redirect, etc.)
+                alert('Login successful: ' + data.accessToken);
+            } else {
+                // Handle error from the server
+                setLoginError(data.message || 'Login failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error logging in:', error);
+            setLoginError('An error occurred. Please try again later.');
+        });
+    };
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -108,10 +138,10 @@ const LoginSignup = () => {
 
                 {/* Login Fields */}
                 <div className="input">
-                    <input type="email" placeholder="Email" />
+                    <input type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}}/>
                 </div>
                 <div className="input">
-                    <input type="password" placeholder="Password" />
+                    <input type="password" placeholder="Password" onChange={(e) => {setPassword(e.target.value)}}/>
                 </div>
             </div>
 
@@ -125,9 +155,17 @@ const LoginSignup = () => {
                 </button>
                 <button
                     className={`submit ${action === "Sign Up" ? "gray" : ""}`}
-                    onClick={() => setAction("Login")}
+                    onClick={() => {setAction("Login"); }}
+
                 >
                     Login
+                </button>
+                <button
+                    className={`submit ${action === "Submit" ? "gray" : ""}`}
+                    onClick={() => { handleLogin();}}
+
+                >
+                    Submit
                 </button>
             </div>
         </div>
