@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Signup.css';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const navigate = useNavigate();  
     const [action, setAction] = useState("Sign Up");
     const [userType, setUserType] = useState("employee");
     const [profileImage, setProfileImage] = useState(null);
@@ -16,6 +18,9 @@ const Signup = () => {
             reader.readAsDataURL(file);
         }
     };
+    const navigateToLogin= () => {
+        navigate('/login');
+    }; 
 
     return (
         <div className="page-wrapper">
@@ -112,7 +117,8 @@ const Signup = () => {
                 <div className="submit-container">
                     <button
                         className={`submit`}
-                        onClick={() => setAction("Sign Up")}
+                        // for now, navigate to login page
+                        onClick={() => navigateToLogin()}
                     >
                         Sign Up
                     </button>

@@ -4,7 +4,8 @@ import MainPage from "./Components/MainPage/MainPage";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
-
+import Matched from "./Components/Matched/Matched";
+import MatchedRecruiter from "./Components/Matched/MatchedRecruiter";
 function App() {
   const users = [
     {
@@ -49,6 +50,8 @@ function App() {
         <Route path="/" element={<MainPage users={users} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
+        <Route path="/matched" element={<Matched/>} />
+        <Route path="/matchedRecruiter" element={<MatchedRecruiter/>} />
       </Routes>
     </div>
   );

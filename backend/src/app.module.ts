@@ -14,6 +14,7 @@ import { UserModule } from './modules/user/user.module';
 import { ValidationModule } from './modules/validation/validation.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { LoginModule } from './modules/login/login.module';
+import { MainModule } from './modules/main/main.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
@@ -48,6 +49,7 @@ const modules = [
   TokenModule,
   AuthModule,
   LoginModule,
+  MainModule,
   ServeStaticModule.forRoot({
     renderPath: 'static',
     rootPath: join(__dirname, '..', 'static'),

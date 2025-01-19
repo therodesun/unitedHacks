@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
+import { useNavigate } from 'react-router-dom';
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Sign Up");
@@ -16,7 +17,9 @@ const LoginSignup = () => {
             reader.readAsDataURL(file);
         }
     };
-
+    const naviagetomainpage = () => {
+        navigate('/');
+    }; 
     return (
         <div className="container">
             <div className="header">
@@ -119,7 +122,7 @@ const LoginSignup = () => {
             <div className="submit-container">
                 <button
                     className={`submit ${action === "Login" ? "gray" : ""}`}
-                    onClick={() => setAction("Sign Up")}
+                    onClick={() => naviagetomainpage()}
                 >
                     Sign Up
                 </button>
