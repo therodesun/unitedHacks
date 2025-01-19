@@ -455,11 +455,15 @@ export class UserSeeder {
       ).map((profile) => {
         return {
           ...profile,
+          email: `${profile.firstName.toLowerCase()}.${profile.lastName.toLowerCase()}.${
+            Math.random() * 100000
+          }@example.com`,
+          password: `${Math.random() * 100000}`,
           role: UserRoleEnum.CANDIDATE,
         };
       });
 
-      console.log(profiles);
+      await this.dbContext.users.insertMany(profiles);
       // todo - insert profiles into db
     }
 
