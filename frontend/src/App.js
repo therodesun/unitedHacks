@@ -1,6 +1,9 @@
-import React from 'react';
-import './App.css';
-import MainPage from './Components/MainPage/MainPage';
+import React from "react";
+import "./App.css";
+import MainPage from "./Components/MainPage/MainPage";
+import { Route, Routes } from "react-router-dom";
+import Login from "./Components/Login/Login";
+import Signup from "./Components/Signup/Signup";
 
 function App() {
   const users = [
@@ -13,7 +16,7 @@ function App() {
       experience: "3 years",
       location: "New York",
       salary: "$80,000/year",
-      profileImage: "https://i.pravatar.cc/150?img=8"
+      profileImage: "https://i.pravatar.cc/150?img=8",
     },
     {
       id: 3,
@@ -24,7 +27,7 @@ function App() {
       experience: "3 years",
       location: "New York",
       salary: "$80,000/year",
-      profileImage: "https://i.pravatar.cc/150?img=8"
+      profileImage: "https://i.pravatar.cc/150?img=8",
     },
     {
       id: 2,
@@ -35,14 +38,18 @@ function App() {
       experience: "3 years",
       location: "New York",
       salary: "$80,000/year",
-      profileImage: "https://i.pravatar.cc/150?img=8"
+      profileImage: "https://i.pravatar.cc/150?img=8",
     },
     // Add more user objects here
   ];
 
   return (
     <div className="App">
-      <MainPage users={users} />
+      <Routes>
+        <Route path="/" element={<MainPage users={users} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+      </Routes>
     </div>
   );
 }

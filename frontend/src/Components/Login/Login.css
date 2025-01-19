@@ -1,0 +1,174 @@
+/* body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #080026, #6745fe);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    max-height: 80vh; /* Set a maximum height */
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 30px 20px;
+    overflow-y: auto; /* Add vertical scrolling */
+    position: relative;
+    scrollbar-width: thin; /* For modern browsers */
+    scrollbar-color: #4c00b4 #eaeaea; /* Customize scrollbar color */
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.text {
+    color: #4c00b4;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+.underline {
+    width: 80px;
+    height: 4px;
+    background: #4c00b4;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+
+.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 480px;
+    height: 50px;
+    background: #eaeaea;
+    border-radius: 6px;
+}
+
+.input input,
+.input select {
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #555;
+    font-size: 16px;
+    padding-left: 10px;
+
+}
+
+.input svg {
+    color: #797979;
+}
+
+.submit-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+    position: sticky; /* Make it stick to the bottom */
+    bottom: 0; /* Align to the bottom of the container */
+    background: #fff; /* Ensure it matches the container's background */
+    padding: 10px 0; /* Add padding for better spacing */
+}
+
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    background: #4c00b4;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit:hover {
+    background: #5d00d6;
+}
+
+.gray {
+    background: #ddd;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.forgot-password {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #797979;
+}
+
+.forgot-password span {
+    color: #4c00b4;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}
+
+.profile-picture-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #4c00b4;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profile-upload-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.placeholder {
+    color: #4c00b4;
+    font-size: 14px;
+    text-align: center;
+}
+
+.profile-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
