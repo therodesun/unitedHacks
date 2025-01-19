@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import MainPage from './Components/MainPage/MainPage';
+import LoginSignup from './Components/LoginSignup/LoginSignup';
 
 function App() {
   // Dummy user data
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <div>
-      <MainPage user={dummyUser} />
+      <LoginSignup />
     </div>
   );
 }
