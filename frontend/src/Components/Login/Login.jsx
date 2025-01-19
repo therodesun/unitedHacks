@@ -11,6 +11,7 @@ const Login = () => {
     const handleLogin = () => {
         if (!email || !password) {
             setLoginError('Please enter both email and password');
+        
             return;
         }
 
@@ -26,6 +27,8 @@ const Login = () => {
             if (data.accessToken) {
                 // Handle successful login (store token, redirect, etc.)
                 alert('Login successful: ' + data.accessToken);
+     
+                localStorage.setItem('email', email);
                 navigate('/');
             } else {
                 // Handle error from the server

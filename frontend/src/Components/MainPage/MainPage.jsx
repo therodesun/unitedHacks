@@ -21,7 +21,35 @@ const MainPage = () => {
     fetchUsers();
   }, []);
 
-  const handleSwipe = (direction) => {
+  const handleAction = async (userId, action) => {
+    const email = localStorage.getItem('userEmail'); 
+    if (!email) {
+      console.error('Email not found in localStorage');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:4500/main/action', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, userId, action }),
+      });
+
+      if (response.ok) {
+        console.log(`${action} action sent for user ${userId}`);
+      } else {
+        console.error('Failed to send action:', await response.text());
+      }
+    } catch (error) {
+      console.error('Error sending action:', error);
+    }
+  };
+
+  const handleSwipe = (direction, userId) => {
+    const action = direction === 'right' ? 'like' : 'dislike';
+    handleAction(userId, action); 
     const nextIndex = currentIndex + 1;
     setCurrentIndex(nextIndex);
 
@@ -63,7 +91,7 @@ const MainPage = () => {
                     className="reject"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => handleSwipe('left')}
+                    onClick={() => handleSwipe('left', user.id)}
                   >
                     <FaTimes />
                   </motion.button>
@@ -71,7 +99,7 @@ const MainPage = () => {
                     className="accept"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => handleSwipe('right')}
+                    onClick={() => handleSwipe('right', user.id)}
                   >
                     <FaCheck />
                   </motion.button>
