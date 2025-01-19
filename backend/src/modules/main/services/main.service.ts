@@ -49,11 +49,13 @@ export class MainService {
       likedBy: user.id,
     });
 
-    const existingActionForMatch = await this.dbContext.actions.findOne({
-      type: ActionType.LIKE,
-      likedUserId: user.id,
-      likedBy: likedUserId,
-    });
+    // const existingActionForMatch = await this.dbContext.actions.findOne({
+    //   type: ActionType.LIKE,
+    //   likedUserId: user.id,
+    //   likedBy: likedUserId,
+    // });
+
+    const existingActionForMatch = Math.random() < 0.7;
 
     if (existingActionForMatch) {
       return { matched: true };
