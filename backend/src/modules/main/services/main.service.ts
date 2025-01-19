@@ -29,9 +29,9 @@ export class MainService {
       if (imageIndex > 70) {
         imageIndex = 0;
       }
-
-      return result;
     }
+
+    return result;
   }
 
   async action(action: ActionType, likedUserId: string, email: string) {
