@@ -35,30 +35,36 @@ export class MainService {
   }
 
   async action(action: ActionType, likedUserId: string, email: string) {
-    const user = await this.dbContext.users.findOne({
-      email,
-    });
+    if (action == ActionType.LIKE) {
+      const user = await this.dbContext.users.findOne({
+        email,
+      });
 
-    if (!user) {
-      throw new HttpException('User not found', 404);
-    }
+      if (!user) {
+        throw new HttpException('User not found', 404);
+      }
 
-    await this.dbContext.actions.create({
-      type: action,
-      likedUserId,
-      likedBy: user.id,
-    });
+      await this.dbContext.actions.create({
+        type: action,
+        likedUserId,
+        likedBy: user.id,
+      });
 
-    // const existingActionForMatch = await this.dbContext.actions.findOne({
-    //   type: ActionType.LIKE,
-    //   likedUserId: user.id,
-    //   likedBy: likedUserId,
-    // });
+      // const existingActionForMatch = await this.dbContext.actions.findOne({
+      //   type: ActionType.LIKE,
+      //   likedUserId: user.id,
+      //   likedBy: likedUserId,
+      // });
 
-    const existingActionForMatch = Math.random() < 0.7;
+      // if (existingActionForMatch) {
+      //   return { matched: true };
+      // } else {
+      //   return { matched: false };
+      // }
 
-    if (existingActionForMatch) {
-      return { matched: true };
+      const existingActionForMatch = Math.random() < 0.7;
+
+      return { matched: existingActionForMatch };
     } else {
       return { matched: false };
     }
