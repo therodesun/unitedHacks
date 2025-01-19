@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();  
@@ -10,7 +11,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
     const handleLogin = () => {
         if (!email || !password) {
-            setLoginError('Please enter both email and password');
+            toast.error('Please enter both email and password');
         
             return;
         }
@@ -26,11 +27,12 @@ const Login = () => {
         .then(data => {
             if (data.accessToken) {
                 // Handle successful login (store token, redirect, etc.)
-                alert('Login successful: ' + data.accessToken);
+                toast.success('Login successful!');
      
                 localStorage.setItem('email', email);
                 navigate('/');
             } else {
+              toast.error("Invalid credentials");
                 // Handle error from the server
                 setLoginError(data.message || 'Login failed');
             }

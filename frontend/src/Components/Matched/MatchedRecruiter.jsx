@@ -1,6 +1,9 @@
 import React from 'react';
 import './Matched.css';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const MatchedRecruiter = () => {
+    const navigate = useNavigate();  
     const [email, setEmail] = React.useState('');
     const [schedule, setSchedule] = React.useState('');
 
@@ -14,8 +17,8 @@ const MatchedRecruiter = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Email:', email);
-        console.log('Scheduled Time:', schedule);
+        toast.success('Email sent!');
+        navigate('/');
         // need a post here to send email and schedule time
     };
 

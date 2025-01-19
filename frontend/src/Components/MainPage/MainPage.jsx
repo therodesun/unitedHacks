@@ -3,6 +3,7 @@ import { FaCheck, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import './MainPage.css';
+import { toast } from 'react-toastify';
 
 const MainPage = () => {
   const [users, setUsers] = useState([]);
@@ -40,7 +41,8 @@ const MainPage = () => {
   
       const data = await response.json();
       if (data.matched) {
-        navigate('/matchedrecruiter'); // Navigate to /recruitermatch if matched
+        toast.success('You matched!');
+        navigate('/matchedrecruiter');
       } else {
         console.log(`${action} action sent for user ${userId}`);
       }

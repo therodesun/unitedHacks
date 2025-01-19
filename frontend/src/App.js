@@ -6,6 +6,7 @@ import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import Matched from "./Components/Matched/Matched";
 import MatchedRecruiter from "./Components/Matched/MatchedRecruiter";
+import { ToastContainer } from "react-toastify";
 function App() {
   const users = [
     {
@@ -46,6 +47,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<MainPage users={users} />} />
         <Route path="/login" element={<Login />} />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
     const navigate = useNavigate();  
@@ -19,6 +20,7 @@ const Signup = () => {
         }
     };
     const navigateToLogin= () => {
+        toast.success('Registration Successful!');
         navigate('/login');
     }; 
 
@@ -41,6 +43,7 @@ const Signup = () => {
                                         <div className="placeholder">Upload Photo</div>
                                     )}
                                 </label>
+                            </div>
                                 <input
                                     type="file"
                                     id="profile-upload"
@@ -48,7 +51,6 @@ const Signup = () => {
                                     onChange={handleImageUpload}
                                     hidden
                                 />
-                            </div>
 
                             {/* General Fields */}
                             <div className="input">
@@ -56,6 +58,12 @@ const Signup = () => {
                             </div>
                             <div className="input">
                                 <input type="text" placeholder="Last Name" />
+                            </div>
+                            <div className="input">
+                                <input type="email" placeholder="Email" />
+                            </div>
+                            <div className="input">
+                                <input type="password" placeholder="Password" />
                             </div>
                             <div className="input">
                                 <select
