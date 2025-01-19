@@ -6,7 +6,7 @@ export class MainController {
   constructor(private readonly mainService: MainService) {}
 
   @Get('users')
-  getFirstFiveUsers() {
-    return this.mainService.getFirstFiveUsers();
+  async getAllUsers() {
+    return await this.mainService.getAllUsers();
   }
 }
