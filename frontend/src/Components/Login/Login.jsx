@@ -62,13 +62,13 @@ const Login = () => {
           </div>}
           
           <div className="input">
-            <input type="email" placeholder="Email Id" onChange={(e) => setEmail(e.target.value)}/>
+            <input type="email" placeholder="Email ID" onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className="input">
             <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
           </div>
         </div>
-        {action === "Sign Up" ? <div></div> : <div className="forgot-password">Lost Password? <span>Click Here!</span></div>}
+        {action === "Sign Up" ? <div></div> : <div className="forgot-password" onClick={() => toast('It is demo!')}>Forgot Password? <span>Click Here!</span></div>}
         
         <div className="submit-container">
           <div className={action === "Login" ? "submit gray" : "submit"} onClick={() => {navigateToSignUp();}}>Sign Up</div>
